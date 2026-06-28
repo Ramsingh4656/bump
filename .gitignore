@@ -1,0 +1,9 @@
+# Environment variables — never commit your token
+.env
+
+# Node modules
+node_modules/
+
+# PM2 logs
+logs/
+*.log
