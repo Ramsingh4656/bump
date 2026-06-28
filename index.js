@@ -1,3 +1,15 @@
+// ─── Node 18 Polyfill ────────────────────────────────────────────────────────
+if (typeof File === 'undefined') {
+  const { Blob } = require('buffer');
+  global.File = class File extends Blob {
+    constructor(chunks, filename, opts = {}) {
+      super(chunks, opts);
+      this.name         = filename;
+      this.lastModified = opts.lastModified ?? Date.now();
+    }
+  };
+}
+
 /**
  * Discord Selfbot - Auto /bump
  * Automatically executes the /bump command every 2 hours using a user token.
